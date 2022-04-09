@@ -1,4 +1,6 @@
 import React, { Component } from 'react'
+import {connect} from 'react-redux';
+import {increment, decrement, loggedin} from '../Redux/actions/index.js'
 
 class ClassComponent extends Component {
   constructor(props) {
@@ -51,16 +53,36 @@ class ClassComponent extends Component {
       // <div>{this.state.message}</div>
       <div> 
         <h2>{greet}</h2>
-        <h2>{message}</h2>
+        <h2>{this.props.message}</h2> 
+        {/* ditambahin props nya jangan lupa */}
         {/* <button onClick={this.change}>Change Message</button> */}
         <button onClick={this.change}>Change Message</button>
         <h1>{count}</h1>
-        <button onClick={this.summing}>Tambah</button>
-        <button onClick={this.substract}>Kurang</button>
+        <button onClick={this.props.summing}>Tambah</button> 
+        {/* diatas adalah contoh redux tanpa action */}
+        <button onClick={this.substract}>Kurang</button><br></br>
+        <button onClick={this.props.tambah}>Tambah Action</button> 
+        {/* diatas adalah contoh redux dengan action */}
         <h1>{resultHTML}</h1>
       </div>
     )
   }
 }
 
-export default ClassComponent;
+const mapStateToStore = (state) => {
+  return {
+    message: state.counterReducer // kita import niai state dari counterReducer
+  }
+}
+
+const mapDispatchToStore = (dispatch) => {
+  return {
+    summing: () => dispatch({type: 'INCREMENT', payload:8}), //kita panggil reducers fungsi increment
+    // di atas tadi actionnya belom kepake
+    tambah: () => dispatch(increment(8)) // atau bisa juga dipanggil seperti ini
+    // nah klo sekarang baru dipake, lebih hemat kan, outpoutnya sama aja
+    // paylaodnya itu parameter
+  }
+}
+
+export default connect(mapStateToStore, mapDispatchToStore)(ClassComponent);

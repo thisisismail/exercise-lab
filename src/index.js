@@ -3,8 +3,22 @@ import ReactDOM from 'react-dom';
 import './index.css';
 import App from './App';
 import reportWebVitals from './reportWebVitals';
+// import allReducers from './Redux/reducers/index.js';
+import allReducers from './ReduxGifBrowser/reducers/index';
 import {createStore} from 'redux';
+import {Provider} from 'react-redux';
 
+// const myStore = createStore(allReducers);
+
+// const globalState = {
+//   totalOrder: 9,
+// }
+
+// const reducersz = (state = globalState, action) => {
+//   return state
+// }
+
+const myStore = createStore(allReducers);
 // //store global state
 
 // //action increment
@@ -27,13 +41,14 @@ import {createStore} from 'redux';
 
 // console.log(store.getState());
 
+// const myStore = createStore(allReducer);
 
 ReactDOM.render(
-  <Provider store={myStore}>
-    <React.StrictMode>
-    <App />
-  </React.StrictMode>,
-  </Provider>,
+  
+    <Provider store={myStore}>
+      <App />
+    </Provider>,
+  
   document.getElementById('root')
 );
 

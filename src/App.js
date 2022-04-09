@@ -16,6 +16,10 @@ import GifStateAPIBrowser_05 from "./components/GifStateBrowser_05";
 import GifuseStateBrowser from "./components/GifuseStateBrowser";
 import SpotifyAPIFirstStep from "./components/SpotifyAPIFirstStep";
 import GifuseStateBrowser_w4 from "./components/GifuseStateBrowser_w4";
+import FullReduxCounter from "./components/FullReduxCounter";
+import FullReduxCounter_Functional from "./components/FullReduxCounter_Functional";
+import GifBrowser_Redux from "./ReduxGifBrowser/GifBrowser_Redux";
+
 import {Sample} from "./components/Router_w4";
 import { BrowserRouter as Router, Switch, Route, Link, useParams } from 'react-router-dom'
 
@@ -44,10 +48,16 @@ import { BrowserRouter as Router, Switch, Route, Link, useParams } from 'react-r
 /* for more intuitive, here is the explanation*/ 
 /* we hide the return behind the call back function called filtering(v), so it is not explicit declared*/ 
 
-import {increment, decrement, loggedin} from './actions'
+import {increment, decrement, loggedin} from './Redux/actions';
+import {useSelector, useDispatch} from 'react-redux';
 
+  
 
-export default function App() {
+  function App() {
+    // const counter = useSelector(state => state.counter);
+    // const isLogged = useSelector(state => state.isLogged);
+    // const dispatch = useDispatch(dispatch);
+    
   return (
     <>
       <div className="App">
@@ -69,10 +79,18 @@ export default function App() {
       {/* <GifuseStateBrowser/> */}
       {/* <SpotifyAPIFirstStep/> */}
       {/* <GifuseStateBrowser_w4/> */}
-
+      {/* <button onClick={() => dispatch(increment())}>+</button> */}
       {/* <Sample/> */}
+      {/* <ClassComponent/> */}
+      {/* <FullReduxCounter/> */}
+      {/* <FullReduxCounter_Functional/> */}
+      <GifBrowser_Redux/> 
+      {/* With Search History */}
+      {/* HELLO */}
       </div>
     </>
     
     );
 }
+
+export default App;
