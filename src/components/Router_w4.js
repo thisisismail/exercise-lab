@@ -1,21 +1,24 @@
+/* eslint-disable react/jsx-pascal-case */
 import React from 'react'
-import { BrowserRouter as Router, Switch, Route, Link, useParams } from 'react-router-dom'
+import { BrowserRouter as Router, Switch, Route, Link} from 'react-router-dom'
 import GifuseStateBrowser_w4 from './GifuseStateBrowser_w4'
 import GifuseStateBrowser_w4_trending from './GifuseStateBrowser_w4_trending'
+import GifBrowser_Redux from "../ReduxGifBrowser/GifBrowser_Redux.js";
+
 
 function Router_w4() {
   return (
     <Router>
       <Switch>
-        <Route path="/search">
-          <Link to="/search">ORDINARY</Link>
+        <Route path="/" exact>
+          <Link to="/">ORDINARY</Link>
           <br></br>
           <Link to="/trending">TRENDING</Link>
           <h1>ORDINARY</h1>
-          <GifuseStateBrowser_w4/>
+          <GifBrowser_Redux/>
         </Route>
         <Route path="/trending">
-          <Link to="/search">ORDINARY</Link>
+          <Link to="/">ORDINARY</Link>
           <br></br>
           <Link to="/trending">TRENDING</Link>
           <h1>TRENDING</h1>

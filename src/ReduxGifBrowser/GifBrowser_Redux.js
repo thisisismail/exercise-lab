@@ -3,6 +3,7 @@ import {useState, useEffect} from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import { connect } from 'react-redux';
 import inputText from './actions/index.js';
+import { ImageListItem, ImageList } from '@mui/material';
 
 
 function GifBrowser_Redux(props) {
@@ -33,12 +34,36 @@ function GifBrowser_Redux(props) {
     setTextinput(v.target.value);
   };
 
-  const gifitem = gifdata.map(content =>(
-    <div key={content.id} className="gif-content">
-      <h5>{content.title}</h5>
-      <img src={content.images.fixed_height.url} alt="GIF Image"></img>
+  // const gifitem = gifdata.map(content =>(
+  //   <div key={content.id} className="gif-content">
+  //     <h5>{content.title}</h5>
+  //     <img src={content.images.fixed_height.url} alt="GIF Image"></img>
+  //   </div>
+  // ));
+
+  //////////////////////////////// ini tinggal ditambahin kode dari material UI///////////////////////////////
+  const gifitemMUI = ( 
+    <div className="gif-content">
+    <ImageList
+      sx={{ width: 500, height: 450 }}
+      variant="quilted"
+      cols={4}
+      rowHeight={121}
+    >
+      {gifdata.map((item) => (
+        <ImageListItem key={item.img} cols={item.cols || 1} rows={item.rows || 1}>
+          <img
+            src={item.images.fixed_height.url}
+            alt={item.title}
+            loading="lazy"
+          />
+        </ImageListItem>
+      ))}
+    </ImageList>
     </div>
-  ));
+  );
+  //////////////////////////////// ini tinggal ditambahin sampe sini kode dari material UI/////////////////////////
+  
 
   return (
     <div>
@@ -54,7 +79,8 @@ function GifBrowser_Redux(props) {
       <input type="submit" onClick={submitInput}></input>
       {/* <h5>previous search: {props.searchHistory}</h5> */}
       <div>
-        {gifitem}
+        {gifitemMUI}
+        {/* diubah jadi gifitemMUI kalau perlu */}
         </div>
     </div>
   )

@@ -80,11 +80,11 @@ import {useSelector, useDispatch} from 'react-redux';
       {/* <SpotifyAPIFirstStep/> */}
       {/* <GifuseStateBrowser_w4/> */}
       {/* <button onClick={() => dispatch(increment())}>+</button> */}
-      {/* <Sample/> */}
+      <Sample/>
       {/* <ClassComponent/> */}
       {/* <FullReduxCounter/> */}
       {/* <FullReduxCounter_Functional/> */}
-      <GifBrowser_Redux/> 
+      {/* <GifBrowser_Redux/>  */}
       {/* With Search History */}
       {/* HELLO */}
       </div>
